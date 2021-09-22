@@ -1,0 +1,15 @@
+@startuml test
+actor "Blog User" as person
+participant "Mobile app" as mobile #skyblue
+participant "Single-page application" as spa #skyblue
+participant "E-mail System" as email #grey
+participant "API Application" as api #skyblue
+database "Database" as db
+person -> mobile : Reads and writes posts
+person -> spa : Reads and writes posts
+email -> person : Sends e-mail to
+mobile -> api : Makes API calls to
+spa -> api : Makes API calls to
+api -> db : Reads from and writes to
+api -> email : Sends e-mail using
+@enduml
