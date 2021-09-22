@@ -50,6 +50,7 @@
 Задание лежит в ```jwt_parser```. 
 
 Что бы распарсить токен нужно вставить его в параметр GET запроса.
+Пример: ```http://localhost:8080?jwt=<token>```
 
 ## 2. Закодировать, а затем раскодировать строку “Hello World” при помощи CLI утилиты base64
 ![base64](https://user-images.githubusercontent.com/47303106/133763041-0b5febb2-897d-4972-8a3b-9f64661a4215.png)
