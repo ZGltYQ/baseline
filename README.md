@@ -162,11 +162,54 @@
 SELECT * FROM users WHERE login='admin' OR 1=1--' AND
 password='admin'
 ```
+## 3. Эксплуатация CSRF. Установить в куки переменную authenticated=1 для одного домена (например, mysite.localhost). Сделать html страницу, которую нужно открывать с другого домена (например,  attacker.localhost) и с этой страницы сделать сабмит html формы на mysite.localhost. Проверить отправляется ли в запросе со страницы attacker.localhost куки для домена mysite.localhost. Домены можно настроить в /etc/hosts
 
+![hosts](https://user-images.githubusercontent.com/47303106/134318254-296d9ab4-c297-4722-bbec-60bd2fe2ee1e.png)
+
+> Запускать лучше с firefox так как Chrome блочит куки.
+
+Атакуемый сервер ```mysite.localhost```
+
+Атакующий сервер ```attacker.localhost```
+
+![myst](https://user-images.githubusercontent.com/47303106/134319236-072fdbff-1b30-4d08-882d-aea4ba100596.png)
+![attack](https://user-images.githubusercontent.com/47303106/134319251-b6c0f11b-afbd-47c8-a5ac-7dff841a6f7c.png)
+![cookie](https://user-images.githubusercontent.com/47303106/134319278-fb9eecbe-d94f-4d7b-b42c-f75c3436b04c.png)
+
+# Web vitals (page speed insights)
+
+## 1. Запустить анализ https://webbylab.com в Page Speed Insights (https://developers.google.com/speed/pagespeed/insights/) 
+![webbylab](https://user-images.githubusercontent.com/47303106/134319564-3dad6ff6-a554-463d-ac3c-35520a007459.png)
+
+## 2. Запустить анализ https://webbylab.com в Chrome Devtools Lighthouse
+
+![lighthouse](https://user-images.githubusercontent.com/47303106/134319761-4b09f8ae-e4cc-4397-8628-88db7d8c1adf.png)
+
+# Умение пользоваться профайлером
+
+## 1. Подключись к своему проекту через chrome dev tools. Запусти JavaScript Profiler (отдельная вкладка, не Performance), сделай какое-то действие в приложении (или запрос к бекенду, если это бекенд) и найди самую длительную операцию при помощи профайлера. 
+![performance](https://user-images.githubusercontent.com/47303106/134321024-495f77fb-18bd-4204-9490-d0b0125991ae.png)
+
+## 2. Посмотри на вкладку memory, попробуй поиграться с разными опциями
+![memory](https://user-images.githubusercontent.com/47303106/134320768-1e0833e7-48e4-40b0-8261-b98b8d9036e7.png)
+
+# Архитектура стандартного веб-приложения
+
+## 1. Нарисовать диаграмму solution архитектуры Twitter-like (микроблог на посты по 140 символов) приложения.  Инструмент для рисования и подход можно использовать любой. Мы обычно используем c4 containers diagram и plantuml расширение для рисования https://github.com/plantuml-stdlib/C4-PlantUML (есть и отличный plantuml плагин для vscode), но можно рисовать в чем нравится. Вот пример диаграммы контейнеров.
+
+Код лежит в ```plantuml```
+
+![test](https://user-images.githubusercontent.com/47303106/134321220-ebc1788f-9afc-4ead-9dfd-2c240ab0138d.png)
+
+# Кэширование
+
+## 1. Необходимо реализовать класс “DNSResolver”, который будет опционально принимать “cacheOptions” и использовать LRU cache replacement policy (взять готовую имплементацию LRU кэша на npm) для кэширования DNS запросов
+
+Задание лежит в ```DNSResolver```;
 
 # Базовые понятия для процесса разработки
 
-## Написать 5 примеров Functional и 5 примеров Non functional requirements для Twitter-like приложения.
+## 1. Написать 5 примеров Functional и 5 примеров Non functional requirements для Twitter-like приложения.
  
   Functional requirements:
 1. Database backup every week.
